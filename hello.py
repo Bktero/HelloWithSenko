@@ -1,2 +1,2 @@
 def hello(who):
-    print("Hello, ", who,":)")
+    print('hello, ', who)
