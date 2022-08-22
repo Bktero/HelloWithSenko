@@ -8,4 +8,4 @@ ota = senko.Senko(user='bktero', repo="HelloWorld", working_dir='', files=['boot
 if ota.update():
     sys.exit(42)
 else:
-    hello.hello('world')
+    hello.hello('you')
