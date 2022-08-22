@@ -6,7 +6,8 @@ class Senko:
     raw = "https://raw.githubusercontent.com"
     github = "https://github.com"
 
-    def __init__(self, user, repo, url=None, branch="master", working_dir="app", files=["boot.py", "main.py"], headers={}):
+    def __init__(self, user, repo, url=None, branch="master", working_dir="app", files=["boot.py", "main.py"],
+                 headers={}):
         """Senko OTA agent class.
 
         Args:
@@ -48,18 +49,27 @@ class Senko:
         changes = []
 
         for file in self.files:
+            print('Test file', file)
+
             latest_version = self._get_file(self.url + "/" + file)
             if latest_version is None:
+                print('ERROR:', file, 'not found in the repository')
                 continue
 
             try:
                 with open(file, "r") as local_file:
                     local_version = local_file.read()
             except:
+                print('ERROR: no local file')
                 local_version = ""
 
             if not self._check_hash(latest_version, local_version):
+                print('Different, add to changes')
                 changes.append(file)
+            else:
+                print('Same')
+
+            print('---')
 
         return changes
 
