@@ -1,0 +1,15 @@
+[Unit]
+Description=Hello with Senko
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=pi
+Type=simple
+Restart=always
+RestartSec=1s
+WorkingDirectory=/home/pi/HelloWithSenko/
+ExecStart=/bin/bash ./run.bash
+
+[Install]
+WantedBy=muti-user.target
